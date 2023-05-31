@@ -4,22 +4,22 @@ class App extends React.Component {
   constructor(){
     super();
     this.state={
-      studentName:'Phuong'
+  
+      number:0
     }
     // this.handleChange = this.handleChange.bind(this)
   }
-
-  handleChange(){
-    this.setState({
-      studentName:this.state.studentName=='Sang'?'Phuong':'Sang'
-    })
+increaseNumber(){
+  this.setState({
+    number:this.state.number+1
+  })
+}
    
-  }
   render(){
     return(
       <div>
-        Student Name: {this.state.studentName}
-        <button onClick={()=>this.handleChange()}>Change Student Name</button>
+        <p>Number: {this.state.number}</p>
+        <button onClick={()=>this.increaseNumber()}>Plus One</button>
       </div>
     )
   }
