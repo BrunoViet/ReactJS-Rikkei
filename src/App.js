@@ -1,19 +1,25 @@
-import React from "react";
+import logo from './logo.svg';
+import './App.css';
 
-class App extends React.Component {
-
-  sum=(a,b)=>{
-    return a+b
-  }
-  render() {
-
-    const number1=6;
-    const number2=8;
-  return(
-    <div><h1>Tong cua {number1} va {number2} la: {this.sum(number1,number2)}</h1></div>
-  )
-  }
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div>
+  );
 }
-
 
 export default App;
