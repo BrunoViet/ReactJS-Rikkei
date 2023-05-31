@@ -1,27 +1,19 @@
 import React from "react";
+import "./App.css";
+import Header from "./Component/Header";
+import ListItems from "./Component/ListIteam";
+
 
 class App extends React.Component {
-  constructor(){
-    super();
-    this.state={
-  
-      number:0
-    }
-    // this.handleChange = this.handleChange.bind(this)
-  }
-increaseNumber(){
-  this.setState({
-    number:this.state.number+1
-  })
-}
-   
-  render(){
-    return(
-      <div>
-        <p>Number: {this.state.number}</p>
-        <button onClick={()=>this.increaseNumber()}>Plus One</button>
+  render() {
+    return (
+      <div className='App'>
+        <Header />
+        <ListItems />
       </div>
-    )
+    );
   }
 }
-export default App
+
+
+export default App;
