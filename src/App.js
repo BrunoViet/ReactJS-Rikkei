@@ -4,27 +4,39 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      inputValue:""
+     number:'',
+     array:[],
+     total:0
     }
   }
 
   handleChange=(e) => {
     this.setState({
-      inputValue: e.target.value
+      number: Number(e.target.value)
     })
   }
 
   submitForm=(e) => {
     e.preventDefault();
-    alert('Ban vua nhap: '+ this.state.inputValue)
+    this.setState({
+      array:[...this.state.array,this.state.number],
+      total:this.state.total+this.state.number,
+      number:''
+    })
   }
   render() {
     return(
       <>
       <form onSubmit={this.submitForm}>
-        <input onChange={this.handleChange}/>
+        <input 
+        type="number"
+        value={this.state.number}
+        onChange={this.handleChange}/>
         <button type="submit">Submit</button>
       </form>
+      <div>
+        {this.state.array.join("+") + "="+this.state.total}
+      </div>
       </>
     )
   }
