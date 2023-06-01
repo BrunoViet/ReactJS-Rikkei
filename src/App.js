@@ -4,39 +4,40 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-     number:'',
-     array:[],
-     total:0
+     color:"black",
+     isShown: false,
+     fontSize: 10,
+     content:"Hello Babe!"
     }
   }
 
-  handleChange=(e) => {
+  handleToggle=() => {
     this.setState({
-      number: Number(e.target.value)
+      isShown: !this.state.isShown  
     })
   }
 
-  submitForm=(e) => {
-    e.preventDefault();
+  handleChangeBackground=() => {
     this.setState({
-      array:[...this.state.array,this.state.number],
-      total:this.state.total+this.state.number,
-      number:''
+     color:this.state.color=='black'?'red':'black',
+     fontSize:this.state.fontSize==10?14:10,
+     content:this.state.content=='Hello Babe!'?"I LOVE U":'Hello Babe!'
     })
   }
   render() {
     return(
       <>
-      <form onSubmit={this.submitForm}>
-        <input 
-        type="number"
-        value={this.state.number}
-        onChange={this.handleChange}/>
-        <button type="submit">Submit</button>
-      </form>
-      <div>
-        {this.state.array.join("+") + "="+this.state.total}
-      </div>
+      {this.state.isShown?(
+        <>
+        <p style={{color:this.state.color,fontSize:this.state.fontSize}}>
+        {this.state.content}
+        </p>
+        <button onClick={this.handleChangeBackground}>Change</button>
+        </> 
+      ):(
+        ""
+      )}
+      <button onClick={this.handleToggle}>Toggle</button>
       </>
     )
   }
