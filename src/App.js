@@ -1,26 +1,31 @@
 import React from "react";
 
 class App extends React.Component {
-  constructor(){
-    super();
-    this.state={
-  
-      number:0
+  constructor(props) {
+    super(props);
+    this.state = {
+      inputValue:""
     }
-    // this.handleChange = this.handleChange.bind(this)
   }
-increaseNumber(){
-  this.setState({
-    number:this.state.number+1
-  })
-}
-   
-  render(){
+
+  handleChange=(e) => {
+    this.setState({
+      inputValue: e.target.value
+    })
+  }
+
+  submitForm=(e) => {
+    e.preventDefault();
+    alert('Ban vua nhap: '+ this.state.inputValue)
+  }
+  render() {
     return(
-      <div>
-        <p>Number: {this.state.number}</p>
-        <button onClick={()=>this.increaseNumber()}>Plus One</button>
-      </div>
+      <>
+      <form onSubmit={this.submitForm}>
+        <input onChange={this.handleChange}/>
+        <button type="submit">Submit</button>
+      </form>
+      </>
     )
   }
 }
