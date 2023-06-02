@@ -1,38 +1,40 @@
 import React from "react";
+import Child from "./component/Child";
 
 class App extends React.Component {
-  // Cau2
-//   sum=(a,b)=>{
-//     return a+b
-//   }
-//   render() {
 
-//     const number1=6;
-//     const number2=8;
-//   return(
-//     <div><h1>Tong cua {number1} va {number2} la: {this.sum(number1,number2)}</h1></div>
-//   )
-//   }
+  constructor(props) {
+    super(props);
+    this.state = {
+      age: 26
+    }
+    console.log('App constructor')
+    this.handleChange = this.handleChange.bind(this)
+  }
 
-// Cau3
+  componentWillMount() {
+    console.log('App componentWillMount');
+  }
 
-constructor(props) {
-  super(props);
-  this.state = {
-    time:new Date(),
+  handleChange() {
+    this.setState({
+      age: 29
+    })
+  }
+  render() {
+    console.log('app render')
+    return (
+      <>
+        <div>App Component</div>
+        <button onClick={this.handleChange}>Change Age</button>
+        <Child age={this.state.age} />
+      </>
+
+    )
+  }
+
+  componentDidMount() {
+    console.log('App componentDidMount');
   }
 }
-render(){
-  let time =new Date();
-  return(
-    <div>
-      <h1>Dong ho</h1>
-      
-    </div>
-  )
-}
-
-}
-
-
-export default App;
+export default App
