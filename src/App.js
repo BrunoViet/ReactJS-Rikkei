@@ -1,25 +1,35 @@
 import React from "react";
 
 class App extends React.Component {
-  constructor(){
+  constructor() {
     super();
-    this.state={
-  
-      number:0
+    this.state = {
+
+      time: new Date()
     }
     // this.handleChange = this.handleChange.bind(this)
   }
-increaseNumber(){
-  this.setState({
-    number:this.state.number+1
-  })
-}
-   
-  render(){
-    return(
+
+  componentDidMount() {
+    // setInterval(this.getTime, 1000);
+    this.getTime()
+  }
+
+  componentDidUpdate() {
+    console.log("Update lai 1 lan ")
+    setTimeout(this.getTime, 1000);
+  }
+
+  getTime = () => {
+    this.setState({
+      time: new Date()
+    })
+  }
+
+  render() {
+    return (
       <div>
-        <p>Number: {this.state.number}</p>
-        <button onClick={()=>this.increaseNumber()}>Plus One</button>
+        <p>{this.state.time.toLocaleTimeString()}</p>
       </div>
     )
   }
