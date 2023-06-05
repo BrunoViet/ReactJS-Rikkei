@@ -1,27 +1,27 @@
-import { useEffect, useState } from "react";
+import { useState, useReducer } from "react";
 
 function App() {
-  const [count, setCount] = useState(0);
-  const [count2, setCount2] = useState(0);
+  // const [count, setCount] = useState(0)
 
-  useEffect(function () {
-    document.title = `You clicked ${count2} times`
-    console.log('hello')
-  }, [count2])
+  const UP = 'UP';
+  const DOWN = 'DOWN';
 
-  const handleIncrease = () => {
-    setCount(count + 1)
-    setCount2(count2 + 2)
+  const reducer = (state, actions) => {
+    if (actions === UP) {
+      return state += 1
+    } else if (actions === DOWN) {
+      return state -= 1
+    }
   }
+
+  const [count, dispatch] = useReducer(reducer, 0)
+
   return (
-    <div>
-      <h1>
-        You clicked {count} times
-        Computer get {count2}
-      </h1>
-      <button onClick={handleIncrease}>
-        Increase
-      </button>
+    <div className="app">
+      <h1>Reducer</h1>
+      <p>Count: {count}</p>
+      <button onClick={() => dispatch(UP)}>Up</button>
+      <button onClick={() => dispatch(DOWN)}>Down</button>
     </div>
   )
 }
