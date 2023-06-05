@@ -1,5 +1,6 @@
 import React from "react";
-import Child from "./component/Child";
+
+import Login from "./component/Login";
 
 class App extends React.Component {
 
@@ -8,33 +9,14 @@ class App extends React.Component {
     this.state = {
       age: 26
     }
-    console.log('App constructor')
-    this.handleChange = this.handleChange.bind(this)
-  }
-
-  componentWillMount() {
-    console.log('App componentWillMount');
-  }
-
-  handleChange() {
-    this.setState({
-      age: 29
-    })
   }
   render() {
-    console.log('app render')
     return (
-      <>
-        <div>App Component</div>
-        <button onClick={this.handleChange}>Change Age</button>
-        <Child age={this.state.age} />
-      </>
-
+      <div>
+        <Login />
+      </div>
     )
   }
 
-  componentDidMount() {
-    console.log('App componentDidMount');
-  }
 }
 export default App
