@@ -1,11 +1,31 @@
-import { Button as Btn } from "react-bootstrap";
-import 'bootstrap/dist/css/bootstrap.css';
+import { Alert, Space, Spin } from 'antd';
+import './App.css'
+const App = () => (
+  <Space
+    direction="vertical"
+    style={{
+      width: '100%',
+    }}
+  >
+    <Space>
+      <Spin tip="Loading" size="small">
+        <div className="content" />
+      </Spin>
+      <Spin tip="Loading">
+        <div className="content" />
+      </Spin>
+      <Spin tip="Loading" size="large">
+        <div className="content" />
+      </Spin>
+    </Space>
 
-function App() {
-  return (
-    <div>
-      <Btn>Hello</Btn>
-    </div>
-  )
-}
+    <Spin tip="Loading...">
+      <Alert
+        message="Alert message title"
+        description="Further details about the context of this alert."
+        type="info"
+      />
+    </Spin>
+  </Space>
+);
 export default App;
