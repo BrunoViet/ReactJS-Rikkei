@@ -3,19 +3,15 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
-const DATA = [
-  { id: "todo-0", name: "Eat", completed: true },
-  { id: "todo-1", name: "Sleep", completed: false },
-  { id: "todo-2", name: "Repeat", completed: false },
-];
-
-
+import { Provider } from 'react-redux';
+import countStore from './store/countStore';
+//Mới vào phải bọc Provider quanh a
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App task={DATA} />
-  </React.StrictMode>
+  //Bước 3: Tạo xong store thì về lại đây config để file App có được thuộc tính store
+  <Provider store={countStore}>
+    <App />
+  </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function
