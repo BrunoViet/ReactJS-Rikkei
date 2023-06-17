@@ -1,16 +1,27 @@
-//Bước 4: Định nghĩa các actions để biết đó là hành động gì và tên gì
-
-export const upCount = (value) => {
+export const addTodo = (todo) => {
     return {
-        type: 'UP_COUNT',
-        payload: value
+        type: 'ADD_TODO',
+        payload: todo
     }
 }
 
-export const downCount = (value) => {
+export const deleteTodo = (id) => {
     return {
-        type: 'DOWN_COUNT',
-        payload: value
+        type: 'DELETE_TODO',
+        payload: id
     }
 }
 
+export const updateTodo = (todo) => {
+    return {
+        type: 'UPDATE_TODO',
+        payload: todo
+    }
+}
+
+export const updateStatusTodo = (todo) => {
+    return {
+        type: 'UPDATE_STATUS_TODO',
+        payload: todo
+    }
+}

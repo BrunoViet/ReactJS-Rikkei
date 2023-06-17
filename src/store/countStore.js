@@ -1,9 +1,9 @@
 //Tạo xong reducer tiếp tục tạo store (Bước 2)
 
-import countReducer from "../reducers/countReducers";
 import { createStore } from "redux";
+import todoReducer from "../reducers/countReducers";
 
 
-const countStore = createStore(countReducer)//deprecated: tương lai bị loại bỏ
+const countStore = createStore(todoReducer)//deprecated: tương lai bị loại bỏ
 
 export default countStore

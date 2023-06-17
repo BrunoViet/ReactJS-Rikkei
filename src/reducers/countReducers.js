@@ -1,28 +1,54 @@
-//cấu hình reducers đầu tiên (Bước 1)
-
-const initState = {
-    count: 0,
+const initialState = {
+    todos: []
 }
 
-const countReducer = (state = initState, action) => {
-    //Bước 5: khởi tạo các trường hợp nếu các hành động xảy ra thuộc thể loại gì
+const todoReducer = (state = initialState, action) => {
     switch (action.type) {
-        case 'UP_COUNT':
+        case 'ADD_TODO':
             return {
-                // ...state,
-                count: state.count + action.payload
+                ...state,
+                todos: [...state.todos, action.payload]
             }
-        case 'DOWN_COUNT':
+        case 'DELETE_TODO':
+            const updatedTodos = state.todos.filter(todo => todo.id !== action.payload)
             return {
-                // ...state,
-                count: state.count - action.payload
+                ...state,
+                todos: updatedTodos
+            }
+        case 'UPDATE_TODO':
+            const updatedTodoList = state.todos.map(todo => {
+                if (todo.id === action.payload.id) {
+                    return {
+                        ...todo,
+                        name: action.payload.name,
+                        done: action.payload.done
+                    }
+                } else {
+                    return todo
+                }
+            })
+            return {
+                ...state,
+                todos: updatedTodoList
+            }
+        case 'UPDATE_STATUS_TODO':
+            const updatedStatusTodo = state.todos.map(todo => {
+                if (todo.id === action.payload.id) {
+                    return {
+                        ...todo,
+                        name: action.payload.name,
+                        done: action.payload.done
+                    }
+                } else {
+                    return todo
+                }
+            })
+            return {
+                ...state,
+                todos: updatedStatusTodo
             }
         default:
-            return {
-                // ...state,
-                count: state.count
-            }
+            return state
     }
 }
-
-export default countReducer
+export default todoReducer
