@@ -64,11 +64,17 @@ function Cart() {
                                     <td style={{ fontWeight: "bold" }}>{item.price * item.quantity} USD</td>
                                     <td>
                                         {isEdit ?
-                                            <button className="btn btn-success"
-                                                onClick={() => handleSaveEdit(item)}
-                                            >
-                                                Save
-                                            </button> : <button className="btn btn-primary"
+                                            <>
+                                                <button className="btn btn-success"
+                                                    onClick={() => handleSaveEdit(item)}
+                                                >
+                                                    Save
+                                                </button>
+                                                <button className="btn btn-secondary ms-2"
+                                                    onClick={handleUpdate}
+                                                >Cancel</button>
+                                            </>
+                                            : <button className="btn btn-primary"
                                                 onClick={handleUpdate}
                                             >
                                                 Update
