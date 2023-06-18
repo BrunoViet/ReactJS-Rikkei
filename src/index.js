@@ -4,14 +4,19 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
-import countStore from './store/countStore';
-//Mới vào phải bọc Provider quanh a
+import listProductStore from './store/ListProductStore';
+
+
+
+//Mới vào phải bọc Provider quanh APP
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   //Bước 3: Tạo xong store thì về lại đây config để file App có được thuộc tính store
-  <Provider store={countStore}>
+
+  <Provider store={listProductStore}>
     <App />
   </Provider>
+
 );
 
 // If you want to start measuring performance in your app, pass a function

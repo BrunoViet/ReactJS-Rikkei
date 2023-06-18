@@ -1,13 +1,19 @@
 import React from "react";
-import Count from "./components/Count";
+import ListProduct from "./components/ListProduct";
+import Cart from "./components/Cart";
 
 class App extends React.Component {
 
   render() {
     return (
       <>
-        <div className="App">
-          <Count />
+        <div className="row">
+          <div className="col-6">
+            <ListProduct />
+          </div>
+          <div className="col-6">
+            <Cart />
+          </div>
         </div>
       </>
     )
