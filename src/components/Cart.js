@@ -2,12 +2,20 @@ import { useDispatch, useSelector } from "react-redux"
 import "./style.css"
 import { deleteProduct, updateProductToCart } from "../actions/CartActions"
 import { useState } from "react"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Cart() {
     const dispatch = useDispatch()
     const listCart = useSelector(state => state.cart.cart)
     const [isEdit, setIsEdit] = useState(false)
     const [quantityEdit, setQuantityEdit] = useState()
+
+
+    let sum = 0
+    listCart.forEach(item => {
+        sum += Number(item.price * item.quantity)
+    })
 
     const handleUpdate = () => {
         setIsEdit(!isEdit)
@@ -16,12 +24,12 @@ function Cart() {
     const handleSaveEdit = (data) => {
         dispatch(updateProductToCart({
             data: {
-                ...data, quantity: quantityEdit
+                ...data, quantity: +quantityEdit
             }
         }))
+        toast.success('Cart updated successfully')
 
         setIsEdit(!isEdit)
-
     }
 
     const handleEditQuantity = (e) => {
@@ -30,6 +38,7 @@ function Cart() {
 
     const handleDelete = (id) => {
         dispatch(deleteProduct(id))
+        toast.error('Product deleted successfully')
     }
     return (
         <>
@@ -89,6 +98,12 @@ function Cart() {
                             </>
                         )
                     })}
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td colSpan={2} style={{ fontSize: "30px", fontWeight: "bold" }}>Total:</td>
+                        <td colSpan={2} style={{ fontSize: "30px", fontWeight: "bold" }}>{sum} USD</td>
+                    </tr>
                 </table>
             </div>
         </>

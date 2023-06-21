@@ -1,5 +1,4 @@
 export const addProductToCart = (product) => {
-    console.log(product)
     return {
         type: 'ADD_PRODUCT_TO_CART',
         payload: product
@@ -7,6 +6,7 @@ export const addProductToCart = (product) => {
 }
 
 export const updateProductToCart = (product) => {
+    console.log(product)
     return {
         type: 'UPDATE_PRODUCT_TO_CART',
         payload: product

@@ -2,6 +2,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { addProductToCart } from "../actions/CartActions";
 import listProductReducer from "../reducers/ListProductReducers";
 import { useEffect, useState } from "react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function ListProduct() {
     const listProduct = useSelector(state => state.listProduct.products);
@@ -12,7 +14,7 @@ function ListProduct() {
         dispatch(addProductToCart({
             data: { ...data, quantity: quantity }
         }))
-
+        toast.success('Successfully added')
     }
     const handleChangeQuantity = (e) => {
         setQuantity(e.target.value)
@@ -26,15 +28,15 @@ function ListProduct() {
                         <>
                             <div className="row mt-3" key={item.id}>
                                 <div className="col-md-4 col-sm-3">
-                                    <img src={item.imgUrl} alt="" height="200px" width="250px" />
+                                    <img src={item.imgUrl} alt="anh cua Viet" height="200px" width="250px" />
                                 </div>
                                 <div className="col-md-6 col-sm-7">
                                     <h2>{item.name}</h2>
                                     <p>{item.description}</p>
                                 </div>
                                 <div className="col-md-2 col-sm-2">
-                                    <input type="number"
-                                        defaultValue={1}
+                                     <input type="number"
+                                        defaultValue={quantity}
                                         onChange={(e) => handleChangeQuantity(e)} className="mb-5 ms-3" min="1"
 
                                         style={{ textAlign: "center", width: "50px" }} />

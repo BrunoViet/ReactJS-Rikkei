@@ -1,6 +1,8 @@
 import React from "react";
 import ListProduct from "./components/ListProduct";
 import Cart from "./components/Cart";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 class App extends React.Component {
 
@@ -14,6 +16,7 @@ class App extends React.Component {
           <div className="col-6">
             <Cart />
           </div>
+          <ToastContainer />
         </div>
       </>
     )

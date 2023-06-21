@@ -1,7 +1,8 @@
 const initialState = {
     products: [
         {
-            id: 1, name: 'Air Pods Pro',
+            id: 1,
+            name: 'Air Pods Pro',
             description: 'Pellentesque habitant morbi tristiqu egestas. Vestibulum tortor qdasd asdn iqw ua uaksd qasdbksi qowdha s iahsd iqw aiohandskjoq aoishadsbhqw ipjasdbbyqf uiakjsdnbqf r, facilisis luctus, metus',
             price: '12',
             imgUrl: 'https://th.bing.com/th/id/OIP.vWZHHanuMmVfFVwMlg_BVAHaE8?w=260&h=180&c=7&r=0&o=5&pid=1.7'
@@ -31,13 +32,5 @@ const initialState = {
 }
 
 export const listProductReducer = (state = initialState, action) => {
-    switch (action.type) {
-        case 'ADD_PRODUCT':
-            return {
-                ...state,
-                products: [...state.products, action.payload]
-            }
-        default:
-            return state
-    }
+    return state
 }
